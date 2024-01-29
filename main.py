@@ -3,21 +3,8 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 import pandas as pd
 import xml.etree.ElementTree as ET
 
-def main():
-    # Parse the dictionary to create a dataframe
-    tree = ET.parse('./resources/Viet_Anh.xml') 
-    dictionary = tree.getroot()
-    df = pd.DataFrame(columns=['word', 'definition'])
-    # Only parsing first 100 while testing
-    # dictionary = dictionary[0:100]
-    for record in dictionary:
-        word_elm = record.find('word')
-        definition_elm = record.find('meaning')
-        if word_elm.text is not None and definition_elm is not None:
-            word = word_elm.text.strip()
-            definition = definition_elm.text.strip()
-            df.loc[len(df.index)] = [word, definition]  
-    #print(df.head())
+
+def reverse_search_method(df):
     # Split the words into morphemes
     for index, row in df.iterrows():
         morphemes = row['word'].split()
@@ -41,6 +28,29 @@ def main():
                 file.write(f"- [[{connection}]]\n")
         print(f"{filename} created - {index}")
     print("Done")
+
+def parse_dictionary():
+    tree = ET.parse('./resources/Viet_Anh.xml') 
+    dictionary = tree.getroot()
+    df = pd.DataFrame(columns=['word', 'definition'])
+    # Only parsing first 100 while testing
+    dictionary = dictionary[0:100]
+    for record in dictionary:
+        word_elm = record.find('word')
+        definition_elm = record.find('meaning')
+        if word_elm.text is not None and definition_elm is not None:
+            word = word_elm.text.strip()
+            definition = definition_elm.text.strip()
+            df.loc[len(df.index)] = [word, definition]
+    return df
+
+
+def main():
+    # Parse the dictionary to create a dataframe
+    df = parse_dictionary()
+    print(df.head())
+    # Write data to markdown files
+    reverse_search_method(df)
 
 if __name__ == "__main__":
     main()
