@@ -20,3 +20,28 @@ Finding the data didn't take long, I figured I would borrow a viet to english di
 Before parsing the data I need to decide how I'm going to display it. I've recently learned of obsidian
 We'll create a bunch of markdown files as alll I need is a proof of concept
 I will create a sqllite version too though so I can bring this project further If I want in future
+
+at screen, look to shoulder
+So now that we have the what established, lets talk about the how
+over the shoulder
+Iḿ going to break words down in a tree like format, starting with the end morpheme
+Lets say we have 3 morphemes, A B and C. We have a compound word, ABC̣The program will search bvackwards through this word, and connect it to other words in increasing sizẹ, until we get to the full word.
+Now I´d say lets get started,
+Filp to facing screen with green screen
+But Iḿ already done
+Show the code
+It only took a few loops, but here is our outputted node view. So while this looks good, and basically checks my boxes (show học), there are a lot of dead links and superfluis connection, as well as some missing connections that would improve it further. All of thatś caused by how I coded this together, so Iĺl need to think it over and make some revisions
+
+broll of me walking around and doin things to think it over
+
+shot of me sitting back down and saying
+I´ve got iṭ̣ so, Iĺl first process how many morphemes are in each word. Then, for each word, I'll check each smaller word in the data frame to see if its a sub word of my current word. That should give me maximum context for each defined word, and remove all of my dead links. Time to get to work
+
+OTS slow zoom shot timelapse
+
+Alright the code has been revised,
+
+
+For reference I split out my old code here, then added the new code snippet above and called it from the main function.
+You can see I split out the morpheemes, create each possible combination, then check it against the dictionary vales iwth the same length of morphemes
+After running my program I've got 23 thousand markdown files which I've imported into Obsidian.
