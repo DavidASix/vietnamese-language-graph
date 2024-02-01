@@ -22,14 +22,11 @@ def dict_match_search_method(df):
 
         # Write result to markdown file
         filename = row['kebab'] + '.md'
-        with open(f"./Vault2/{filename}", 'w') as file:
-            file.write(f"# {row['word']}\n\n")
-            file.write(f"## Definition:\n\n")
-            file.write(f"{row['definition']}\n\n")
-            file.write(f"## Subwords:\n")
-            for word in sub_words:
-                file.write(f"- [[{word}]]\n")
-        print(f"{filename} created - {i}")
+        write_markdown_file({
+            'filename': filename, 
+            'word': row['word'], 
+            'definition': row['definition'], 
+            'connections': sub_words})
 
 
 # This is the original method to create the markdown files
@@ -48,14 +45,11 @@ def reverse_search_method(df):
             connections.append(phrase_container)
         connections.pop()
         morphemes.reverse()
-        with open(f"./VietnameseVault/{filename}", 'w') as file:
-            file.write(f"# {row['word']}\n\n")
-            file.write(f"## Definition:\n\n")
-            file.write(f"{row['definition']}\n\n")
-            file.write(f"## Subwords:\n")
-            for connection in connections:
-                file.write(f"- [[{connection}]]\n")
-        print(f"{filename} created - {i}")
+        write_markdown_file({
+            'filename': filename, 
+            'word': row['word'], 
+            'definition': row['definition'], 
+            'connections': connections})
     print("Done")
 
 def parse_dictionary():
@@ -77,6 +71,15 @@ def parse_dictionary():
     print(f"Dictionary parsed - {len(df.index)} entries")
     return df
 
+def write_markdown_file(md_file):
+    with open(f"./ObsidianVault/{md_file['filename']}", 'w') as file:
+        file.write(f"# {md_file['word']}\n\n")
+        file.write(f"## Definition:\n\n")
+        file.write(f"{md_file['definition']}\n\n")
+        file.write(f"## Subwords:\n")
+        for connection in md_file['connections']:
+            file.write(f"- [[{connection}]]\n")
+    print(f"{md_file['filename']} created")
 
 def main():
     # Parse the dictionary to create a dataframe
