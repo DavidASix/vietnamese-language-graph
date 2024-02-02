@@ -9,7 +9,7 @@ This project utilizes Python and Obsidian to visualize these compound words to i
 ## Video
 To see how this project was created, and get a glimpse of my problem-solving method, check out the video here:
 
-[![My video summary of the project](https://img.youtube.com/vi/VIDEO_ID_TO_COME/0.jpg)](https://www.youtube.com/watch?v=VIDEO_ID_TO_COME)
+[![My video summary of the project](https://img.youtube.com/vi/cTIb9MuCV0k/0.jpg)](https://www.youtube.com/watch?v=cTIb9MuCV0k)
 
 ## Project Summary
 
@@ -34,7 +34,7 @@ This method is slightly slower than reverse_search_method, but ensures 100% conn
 
 After running the script, 23000 markdown files will be outputted, which can then be imported into an Obsidian Vault. This will result in a graph view like the following:
 
-![A screenshot of a large Obsidian graph view](IMG-URL-TO-COME)
+![A screenshot of a large Obsidian graph view](/resources/node-graph.png)
 
 ##  How to use
 
