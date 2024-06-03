@@ -1,3 +1,5 @@
+![graphic](./resources/repo-graphic.jpg)
+
 # Vietnamese Language Graph 🇻🇳
 
 Xin chào các bạn!
